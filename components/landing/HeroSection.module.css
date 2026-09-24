@@ -1,0 +1,219 @@
+.hero {
+  padding-top: var(--nav-height);
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  min-height: calc(100vh - var(--nav-height));
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-16);
+}
+
+/* ─── Left Content ─── */
+.eyebrow {
+  margin-bottom: var(--space-5);
+}
+
+.headline {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: var(--font-extrabold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin-bottom: var(--space-6);
+}
+
+.headlineSecond {
+  display: block;
+  color: var(--color-ink);
+}
+
+.headlineAccent {
+  display: block;
+  color: var(--color-brand);
+  font-style: italic;
+}
+
+.description {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: var(--space-8);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.subtext {
+  font-size: var(--text-sm);
+  color: var(--color-subtle);
+  font-style: italic;
+}
+
+/* ─── Right Visual ─── */
+.visual {
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: visible;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-2xl);
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Floating badge */
+.badge {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-ink-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Waveform card */
+.waveCard {
+  position: absolute;
+  bottom: -var(--space-4);
+  left: -var(--space-6);
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-light);
+  max-width: 320px;
+  transform: translateY(12px);
+}
+
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 44px;
+  margin-bottom: var(--space-3);
+}
+
+.waveBar {
+  width: 4px;
+  border-radius: 2px;
+  animation: wavePulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes wavePulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50%       { transform: scaleY(0.6); opacity: 0.7; }
+}
+
+.waveText {}
+
+.waveQuote {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-ink);
+  margin-bottom: var(--space-1);
+}
+
+.waveSubtext {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* ─── Ticker ─── */
+.ticker {
+  background: var(--color-cream);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  overflow: hidden;
+  padding: var(--space-4) 0;
+}
+
+.tickerTrack {
+  display: flex;
+  gap: var(--space-8);
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.tickerItems {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.tickerItems span {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-ink-soft);
+}
+
+.dot {
+  color: var(--color-brand) !important;
+  font-weight: var(--font-bold) !important;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: var(--space-12);
+    gap: var(--space-10);
+  }
+
+  .headline {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .waveCard {
+    left: 0;
+    bottom: -var(--space-6);
+  }
+}
+
+@media (max-width: 640px) {
+  .waveCard {
+    display: none;
+  }
+}
